@@ -1,0 +1,213 @@
+:root {
+  --cst-container-bg-color: #d3e3fd;
+  --cst-bottom-bar-color: #fff;
+  --cst-prev-btn-color: #000;
+  --cst-prev-btn-bg: #fff;
+  --cst-next-btn-color: #000;
+  --cst-next-btn-bg: #fff;
+  --cst-tab-bg-color: var(--cst-container-bg-color);
+  --cst-split-color: #a8c7fa;
+  --cst-split-opacity: 0.8;
+  --cst-tab-active-color: #fff;
+  --cst-tab-hover-bg-color: #a8c7fa;
+  --cst-close-hover-bg-color: #93add9;
+  --cst-close-active-hover-bg-color: #dcdcdd;
+  --cst-prev-next-btn-shadow: 0 2px 8px #00000026;
+  --cst-tab-width: initial;
+  --cst-tab-min-width: initial;
+  --cst-tab-max-width: initial;
+  --cst-font-size: 12px;
+}
+
+.cst-container {
+  background-color: var(--cst-container-bg-color);
+  position: relative;
+  height: 45px;
+  font-size: var(--cst-font-size);
+
+  .cst-bottom-bar {
+    position: absolute;
+    bottom: 0;
+    height: 4px;
+    left: 0;
+    width: 100%;
+    background: var(--cst-bottom-bar-color);
+    z-index: 10;
+  }
+
+  .cst-prev-btn,
+  .cst-next-btn {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    z-index: 102;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: var(--cst-prev-next-btn-shadow);
+    display: none;
+
+    &.show {
+      display: flex;
+    }
+  }
+
+  .cst-prev-btn {
+    left: 10px;
+    color: var(--cst-prev-btn-color);
+    background: var(--cst-prev-btn-bg);
+  }
+
+  .cst-next-btn {
+    right: 10px;
+    color: var(--cst-next-btn-color);
+    background: var(--cst-next-btn-bg);
+  }
+}
+
+.cst-box {
+  display: flex;
+  position: absolute;
+  bottom: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  height: 34px;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .cst-item {
+    width: var(--cst-tab-width, 180px);
+    background-color: var(--cst-tab-bg-color);
+    height: 100%;
+    border-radius: 4px;
+    position: relative;
+    min-width: var(--cst-tab-min-width, 180px);
+    max-width: var(--cst-tab-max-width, 260px);
+
+    &:first-child {
+      margin-left: 7px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 7px;
+      bottom: 11px;
+      right: 0;
+      width: 2px;
+      background: var(--cst-split-color);
+      opacity: var(--cst-split-opacity);
+      transition: opacity 0.2s ease;
+    }
+
+    .cst-bg {
+      position: absolute;
+      z-index: 99;
+      height: 100%;
+      right: -7px;
+      left: -7px;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &:has(+ .cst-item:hover) {
+      &::after {
+        display: none;
+      }
+    }
+
+    &:has(+ .active) {
+      &::after {
+        display: none;
+      }
+    }
+
+    &:hover::after {
+      display: none;
+    }
+
+    &.active {
+      .cst-bg {
+        z-index: 999;
+
+        svg {
+          opacity: 1 !important;
+        }
+      }
+
+      .cst-context:hover {
+        background-color: initial;
+      }
+
+      .cst-geometry {
+        fill: var(--cst-tab-active-color);
+      }
+
+      &::after {
+        display: none;
+      }
+
+      .cst-close:hover {
+        background-color: var(--cst-close-active-hover-bg-color) !important;
+      }
+    }
+
+    .cst-context {
+      z-index: 999;
+      align-items: center;
+      padding: 6px 8px;
+      display: flex;
+      position: absolute;
+      left: 5px;
+      right: 5px;
+      border-radius: 10px;
+      user-select: none;
+      height: 29px;
+      box-sizing: border-box;
+
+      &:hover {
+        background-color: var(--cst-tab-hover-bg-color);
+      }
+
+      .cst-text {
+        flex-grow: 1;
+        margin: 0 5px;
+        cursor: default;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .cst-close {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+
+        svg {
+          width: 50%;
+          height: 50%;
+        }
+
+        &:hover {
+          background-color: var(--cst-close-hover-bg-color);
+        }
+      }
+    }
+  }
+}
