@@ -26,6 +26,10 @@ const config: StorybookConfig = {
         reactDocgen: "react-docgen-typescript",
         check: true,
     },
+    previewHead: (head) => `
+    ${head}
+    <base href="/chrome-style-tabs-react/" />
+  `,
 };
 
 export default config;

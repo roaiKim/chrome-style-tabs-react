@@ -5,7 +5,7 @@ import { defineConfig } from "eslint/config";
 export default defineConfig([
     exampleConfigs,
     {
-        ignores: ["webpack/**", "src/index.html", "dist", "**/**.cjs", ".storybook"],
+        ignores: ["webpack/**", "src/index.html", "dist", "**/**.cjs"],
     },
     {
         rules: {
