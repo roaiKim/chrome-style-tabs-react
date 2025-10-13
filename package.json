@@ -33,7 +33,7 @@
   ],
   "scripts": {
     "build": "rslib build",
-    "build:storybook": "storybook build",
+    "build:storybook": "storybook build --docs",
     "dev": "rslib build --watch",
     "format": "prettier --write .",
     "lint": "eslint .",
