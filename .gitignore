@@ -6,7 +6,7 @@
 # Dist
 node_modules
 dist/
-# storybook-static
+storybook-static
 
 # IDE
 !.vscode/extensions.json
