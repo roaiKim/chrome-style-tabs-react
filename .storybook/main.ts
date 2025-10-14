@@ -25,7 +25,7 @@ const config: StorybookConfig = {
     typescript: {
         reactDocgen: "react-docgen-typescript",
         check: true,
-    }
+    },
 };
 
 export default config;
