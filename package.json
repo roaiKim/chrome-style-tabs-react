@@ -13,6 +13,7 @@
   "files": [
     "dist",
     "assets",
+    "README.md",
     "README-CH.md"
   ],
   "author": "roaiKim https://github.com/roaiKim",
