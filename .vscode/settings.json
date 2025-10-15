@@ -1,7 +1,0 @@
-{
-    "editor.codeActionsOnSave": {
-        "source.fixAll.stylelint": "explicit"
-    },
-    "stylelint.packageManager": "yarn",
-    "stylelint.validate": ["css", "postcss", "less"]
-}

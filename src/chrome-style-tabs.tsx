@@ -241,6 +241,7 @@ function ChromeStyleTabs(props: ChromeStyleTabsProps) {
             firstTab.dataset.index = "first";
             observerRef.current.observe(firstTab);
         }
+
         if (lastTab) {
             lastTab.dataset.index = "last";
             observerRef.current.observe(lastTab);
